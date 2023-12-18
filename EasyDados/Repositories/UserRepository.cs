@@ -13,10 +13,13 @@ namespace EasyDados.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<User> AddUserAsync(User user)
+        public async Task<User> AddUserAsync(User user)
         {
-            throw new NotImplementedException();
+            var entityEntry = await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
+            return entityEntry.Entity;
         }
+
 
         public Task<bool> DeleteUserAsync(int id)
         {

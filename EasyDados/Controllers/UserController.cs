@@ -21,5 +21,14 @@ namespace EasyDados.Controllers
         {
             return await _userService.GetAllUsers();
         }
+
+        [HttpPost]
+        public async Task<User> AddUser(User user)
+
+        {
+            _logger.LogInformation("Chegou nessa bagaça service");
+
+            return await _userService.AddUser(user);
+        }
     }
 }

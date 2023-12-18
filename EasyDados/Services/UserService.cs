@@ -14,6 +14,11 @@ namespace EasyDados.Services
             _userRepository = userRepository;
         }
 
+        public async Task<User> AddUser(User user)
+        {
+            return await _userRepository.AddUserAsync(user);
+        }
+
         public async Task<List<User>> GetAllUsers()
         {
             // Implemente a lógica para obter todos os usuários usando o repositório

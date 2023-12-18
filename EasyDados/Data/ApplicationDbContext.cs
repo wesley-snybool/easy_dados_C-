@@ -22,5 +22,11 @@ namespace EasyDados.Data
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             optionsBuilder.UseNpgsql(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+            .Entity<User>();
+        }
     }
 }
