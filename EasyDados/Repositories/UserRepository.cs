@@ -20,10 +20,20 @@ namespace EasyDados.Repositories
             return entityEntry.Entity;
         }
 
-
-        public Task<bool> DeleteUserAsync(int id)
+        public async Task<string> DeleteUserAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.Users.FindAsync(id);
+
+            if (user != null)
+            {
+                _dbContext.Users.Remove(user);
+                await _dbContext.SaveChangesAsync();
+                return "Usuário deletado com sucesso!";
+            }
+            else
+            {
+                return "Usuário não encontrado";
+            }
         }
 
         public async Task<List<User>> GetAllUsers()
@@ -31,9 +41,9 @@ namespace EasyDados.Repositories
             return await _dbContext.Users.ToListAsync();
         }
 
-        public Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.FindAsync(id);
         }
 
         public Task<User> UpdateUserAsync(User user)

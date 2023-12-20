@@ -19,6 +19,11 @@ namespace EasyDados.Services
             return await _userRepository.AddUserAsync(user);
         }
 
+        public async Task<string> DeleteUserAsync(int id)
+        {
+            return await _userRepository.DeleteUserAsync(id);
+        }
+
         public async Task<List<User>> GetAllUsers()
         {
             // Implemente a lógica para obter todos os usuários usando o repositório

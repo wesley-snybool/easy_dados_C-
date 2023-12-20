@@ -30,5 +30,12 @@ namespace EasyDados.Controllers
 
             return await _userService.AddUser(user);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<string> DeleteUserAsync(int id)
+        {
+            _logger.LogInformation("Conferindo id no delete" + id);
+            return await _userService.DeleteUserAsync(id);
+        }
     }
 }
